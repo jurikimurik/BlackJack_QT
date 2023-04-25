@@ -9,27 +9,27 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    card.cpp \
-    deck.cpp \
-    hand.cpp \
-    handview.cpp \
-    blackjack.cpp \
-    main.cpp
+    src/card.cpp \
+    src/deck.cpp \
+    src/hand.cpp \
+    src/handview.cpp \
+    src/blackjack.cpp \
+    src/main.cpp
 
 HEADERS += \
-    card.h \
-    deck.h \
-    hand.h \
-    handview.h \
-    blackjack.h
+    headers/card.h \
+    headers/deck.h \
+    headers/hand.h \
+    headers/handview.h \
+    headers/blackjack.h
 
 
 
 FORMS += \
-    handview.ui \
-    blackjack.ui
+    forms/handview.ui \
+    forms/blackjack.ui
 
-RESOURCES = cards2.qrc
+RESOURCES = resources/cards2.qrc
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
