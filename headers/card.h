@@ -15,6 +15,10 @@ public:
     int value();
     bool isAce();
 
+    void hide();
+    void show();
+    bool isHided() const;
+
     QString toString() const;
     QString getFace() const;
     QString getSuit() const;
@@ -24,6 +28,8 @@ private:
 
     int m_FaceNbr;
     int m_SuitNbr;
+
+    bool m_isHided;
 };
 
 #endif // CARD_H

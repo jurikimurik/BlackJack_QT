@@ -1,4 +1,4 @@
-#include "hand.h"
+#include "../headers/hand.h"
 
 Hand::Hand(QObject* parent) : QObject(parent)
 {}

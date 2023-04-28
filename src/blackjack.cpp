@@ -1,4 +1,4 @@
-#include "blackjack.h"
+#include "../headers/blackjack.h"
 #include "ui_blackjack.h"
 
 #include <QDebug>
@@ -67,6 +67,7 @@ void BlackJack::buttonMenuClicked(QAction *action)
             elem->clearHand();
             elem->clearWins();
             elem->addCard(stos->pick());
+            elem->hideHand();
         }
 
         nextTurn();
@@ -104,9 +105,13 @@ void BlackJack::buttonMenuClicked(QAction *action)
 void BlackJack::nextTurn()
 {
     if(HW_Turn == nullptr) {
+        //Jezeli poczatek gry, zaczyna pierwszy gracz
         HW_Turn = HWs.at(0);
     }
     else {
+        //Chowamy rękaw starego gracza
+        HW_Turn->hideHand();
+
         int index = HWs.indexOf(HW_Turn);
         if(index == HWs.size()-1) {
             showResults();
@@ -121,6 +126,9 @@ void BlackJack::nextTurn()
         computerTurn();
     else
         ustawMenu(false, false, true, true, true);
+
+    // Pokazujemy rękaw nowego gracza
+    HW_Turn->showHand();
 }
 
 void BlackJack::computerTurn()
@@ -136,6 +144,12 @@ void BlackJack::computerTurn()
 
 void BlackJack::showResults()
 {
+    //Otwieramy wszystkie karty
+    for(auto elem : HWs)
+    {
+        elem->showHand();
+    }
+
     //Laczymy kazdego gracza z jego wynikiem
     QVector<std::pair<HandView*, int>> roznice;
     for(const auto elem : HWs)

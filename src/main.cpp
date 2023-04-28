@@ -1,6 +1,6 @@
-#include "blackjack.h"
+#include "../headers/blackjack.h"
 
-#include "hand.h"
+#include "../headers/hand.h"
 #include <QDebug>
 
 template <typename T>

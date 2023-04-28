@@ -30,6 +30,9 @@ public slots:
     void addCard(Card* karta);
     void clearHand();
 
+    void showHand();
+    void hideHand();
+
 
 private:
     Ui::HandView *ui;

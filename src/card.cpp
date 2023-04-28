@@ -1,4 +1,4 @@
-#include "card.h"
+#include "../headers/card.h"
 
 #include <QDebug>
 
@@ -21,7 +21,7 @@ Card::Card(QString name)
     m_SuitNbr = s_Suits.indexOf(splitted.at(1));
 
     m_label = new QLabel(m_name);
-    m_label->setPixmap(QPixmap::fromImage(QImage(":/images/" + translateToImage(getFace(), getSuit()))));
+    show();
 }
 
 const QString &Card::name()
@@ -57,5 +57,23 @@ QString Card::getSuit() const
 QString Card::toString() const
 {
     return getFace() + " " + getSuit();
+}
+
+bool Card::isHided() const
+{
+    return m_isHided;
+}
+
+void Card::hide()
+{
+    m_label->setPixmap(QPixmap::fromImage(QImage(":/images/cb.png")));
+    m_isHided = true;
+}
+
+
+void Card::show()
+{
+    m_label->setPixmap(QPixmap::fromImage(QImage(":/images/" + translateToImage(getFace(), getSuit()))));
+    m_isHided = false;
 }
 

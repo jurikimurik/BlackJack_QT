@@ -1,4 +1,4 @@
-#include "handview.h"
+#include "../headers/handview.h"
 #include "ui_handview.h"
 
 #include <QDebug>
@@ -100,4 +100,20 @@ void HandView::clearHand()
     }
 
     m_karty->clearHand();
+}
+
+void HandView::showHand()
+{
+    for(auto elem : *m_karty)
+    {
+        elem->show();
+    }
+}
+
+void HandView::hideHand()
+{
+    for(auto elem : *m_karty)
+    {
+        elem->hide();
+    }
 }
