@@ -23,7 +23,6 @@ BlackJack::BlackJack(QWidget *parent) :
         }
         HWs.push_back(HW);
     }
-    // Tworzymy na razie tylko dwoch graczy
 
     for(int i = 0; i < HWs.size(); ++i)
     {
@@ -78,6 +77,7 @@ void BlackJack::buttonMenuClicked(QAction *action)
         {
             elem->clearHand();
             elem->addCard(stos->pick());
+            elem->hideHand();
         }
 
         nextTurn();
@@ -109,9 +109,6 @@ void BlackJack::nextTurn()
         HW_Turn = HWs.at(0);
     }
     else {
-        //Chowamy rękaw starego gracza
-        HW_Turn->hideHand();
-
         int index = HWs.indexOf(HW_Turn);
         if(index == HWs.size()-1) {
             showResults();
@@ -128,7 +125,8 @@ void BlackJack::nextTurn()
         ustawMenu(false, false, true, true, true);
 
     // Pokazujemy rękaw nowego gracza
-    HW_Turn->showHand();
+    if(HW_Turn != nullptr)
+        HW_Turn->showHand();
 }
 
 void BlackJack::computerTurn()
@@ -178,7 +176,6 @@ void BlackJack::showResults()
     } else {
         QMessageBox::information(this, "Wynik", "Wszyscy przegrali!", "O nie!");
     }
-
 
     // Tura teraz jest nieczyja
     HW_Turn = nullptr;
